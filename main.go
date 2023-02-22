@@ -9,21 +9,50 @@ import (
 	"github.com/faiface/beep"
 )
 
-func main() {
-	playSong(songConfig{
-		tempo: tempo{
-			100,
-			N,
-		},
-		sampleRate: beep.SampleRate(44100),
+var looserSong = song{
+	tempo: tempo{
+		100,
+		N,
+	},
+	sampleRate: beep.SampleRate(44100),
 
-		notesToPlay: []noteToPlay{
-			//{F1, N},
-			//{E1, N},
-			//{D1_SOSTENIDO, N},
-			{D1, B.agregarPuntillo()},
-		},
-	})
+	notesToPlay: []noteToPlay{
+		{F1, N},
+		{E1, N},
+		{D1_SOSTENIDO, N},
+		{D1, B},
+	},
+}
+
+var odeHim = song{
+	tempo: tempo{
+		150,
+		N,
+	},
+	sampleRate: beep.SampleRate(44100),
+
+	notesToPlay: []noteToPlay{
+		{B1 / 2, N},
+		{B1 / 2, N},
+		{C2 / 2, N},
+		{D2 / 2, N},
+		{D2 / 2, N},
+		{C2 / 2, N},
+		{B1 / 2, N},
+		{A1 / 2, N},
+		{G1 / 2, N},
+		{G1 / 2, N},
+		{A1 / 2, N},
+		{B1 / 2, N},
+		{B1 / 2, N.agregarPuntillo()},
+		{A1 / 2, C},
+		{A1 / 2, N.agregarPuntillo()},
+	},
+}
+
+func main() {
+	playSong(odeHim)
+	playSong(looserSong)
 }
 
 type tempo struct {
@@ -36,13 +65,13 @@ type noteToPlay struct {
 	figure figuraMusical
 }
 
-type songConfig struct {
+type song struct {
 	notesToPlay []noteToPlay
 	sampleRate  beep.SampleRate
 	tempo
 }
 
-func playSong(songConfig songConfig) {
+func playSong(songConfig song) {
 	fmt.Println("")
 	fmt.Println("///////////// Song config /////////////")
 	fmt.Println("bpm: ", songConfig.tempo.bpm)
@@ -56,8 +85,9 @@ func playSong(songConfig songConfig) {
 }
 
 func reproduceTone(config noteToPlay, tempo int, sampleRate beep.SampleRate, pulseFigure figuraMusical) {
-	beatDuration := time.Millisecond * time.Duration(float64(60000)/float64(tempo)*float64(pulseFigure))
-	toneDuration := beatDuration / time.Duration(config.figure)
+	beatDuration := float64(pulseFigure) * float64(60000) / float64(tempo)
+	figureDuration := time.Duration(beatDuration / float64(config.figure))
+	toneDuration := time.Millisecond * figureDuration
 
 	// Initialize speaker
 	sampleDuration := time.Second / time.Duration(config.tone)
@@ -67,6 +97,8 @@ func reproduceTone(config noteToPlay, tempo int, sampleRate beep.SampleRate, pul
 	fmt.Println("beatDuration: ", beatDuration)
 	fmt.Println("toneDuration: ", toneDuration)
 	fmt.Println("figure: ", config.figure)
+	fmt.Println("pulseFigure: ", pulseFigure)
+	fmt.Println("figureDuration: ", figureDuration)
 
 	// Create a streamer that generates a sine wave for 10 seconds
 	s := beep.StreamerFunc(func(samples [][2]float64) (n int, ok bool) {
@@ -100,7 +132,7 @@ const (
 )
 
 func (f figuraMusical) agregarPuntillo() figuraMusical {
-	return f
+	return f * (2.0 / 3.0)
 }
 
 type nota float32
