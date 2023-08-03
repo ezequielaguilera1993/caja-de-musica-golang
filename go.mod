@@ -12,5 +12,3 @@ require (
 	golang.org/x/mobile v0.0.0-20190415191353-3e0bab5405d6 // indirect
 	golang.org/x/sys v0.0.0-20190626150813-e07cf5db2756 // indirect
 )
-
-replace github.com/ezequielaguilera1993/tocadiscos => github.com/ezequielaguilera1993/caja-de-musica v1.0.0
