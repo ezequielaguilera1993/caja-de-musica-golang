@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-var looserSong = song{
+var LooserSong = song{
 	tempo: tempo{
 		100,
 		N,
@@ -23,9 +23,9 @@ var looserSong = song{
 	},
 }
 
-var odeHim = song{
+var OdeHim = song{
 	tempo: tempo{
-		400,
+		250,
 		N,
 	},
 	sampleRate: beep.SampleRate(44100),
@@ -50,8 +50,8 @@ var odeHim = song{
 }
 
 func main() {
-	playSong(odeHim)
-	playSong(looserSong)
+	PlaySong(OdeHim)
+	PlaySong(LooserSong)
 }
 
 type tempo struct {
@@ -70,7 +70,7 @@ type song struct {
 	tempo
 }
 
-func playSong(songConfig song) {
+func PlaySong(songConfig song) {
 	fmt.Println("")
 	fmt.Println("///////////// Song config /////////////")
 	fmt.Println("bpm: ", songConfig.tempo.bpm)
