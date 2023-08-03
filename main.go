@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/faiface/beep"
 	"github.com/faiface/beep/speaker"
 	"math"
 	"time"
-
-	"github.com/faiface/beep"
 )
 
 var looserSong = song{

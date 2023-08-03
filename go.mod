@@ -1,4 +1,4 @@
-module caja-de-musica-golang
+module "github.com/ezequielaguilera1993/caja-de-musica-golang"
 
 go 1.18
 
