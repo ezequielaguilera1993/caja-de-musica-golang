@@ -1,4 +1,4 @@
-module github.com/ezequielaguilera1993/tocadiscos/v1.0.1
+module github.com/ezequielaguilera1993/tocadiscos
 
 go 1.18
 
