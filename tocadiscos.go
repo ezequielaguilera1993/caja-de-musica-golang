@@ -81,6 +81,8 @@ func PlaySong(songConfig song) {
 	for _, toneConfig := range songConfig.notesToPlay {
 		reproduceTone(toneConfig, songConfig.bpm, songConfig.sampleRate, songConfig.pulseFigure)
 	}
+
+	speaker.Close()
 }
 
 func reproduceTone(config noteToPlay, tempo int, sampleRate beep.SampleRate, pulseFigure figuraMusical) {
