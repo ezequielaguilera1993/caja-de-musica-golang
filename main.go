@@ -26,7 +26,7 @@ var looserSong = song{
 
 var odeHim = song{
 	tempo: tempo{
-		150,
+		400,
 		N,
 	},
 	sampleRate: beep.SampleRate(44100),
