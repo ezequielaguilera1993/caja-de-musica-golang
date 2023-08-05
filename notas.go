@@ -1,92 +1,108 @@
 package tocadiscos
 
+import (
+	"math"
+)
+
+type Nota float64
+
 const (
-	C8           Nota = 4186.01
-	B7           Nota = 3951.07
-	A7_SOSTENIDO Nota = 3729.31
-	A7           Nota = 3520.00
-	G7_SOSTENIDO Nota = 3322.44
-	G7           Nota = 3135.96
-	F7_SOSTENIDO Nota = 2959.96
-	F7           Nota = 2793.83
-	E7           Nota = 2637.02
-	D7_SOSTENIDO Nota = 2489.02
-	D7           Nota = 2349.32
-	C7_SOSTENIDO Nota = 2217.46
-	C7           Nota = 2093.00
-	B6           Nota = 1975.53
-	A6_SOSTENIDO Nota = 1864.66
-	A6           Nota = 1760.00
-	G6_SOSTENIDO Nota = 1661.22
-	G6           Nota = 1567.98
-	F6_SOSTENIDO Nota = 1479.98
-	F6           Nota = 1396.91
-	E6           Nota = 1318.51
-	D6_SOSTENIDO Nota = 1244.51
-	D6           Nota = 1174.66
-	C6_SOSTENIDO Nota = 1108.73
-	C6           Nota = 1046.50
-	B5           Nota = 987.767
-	A5_SOSTENIDO Nota = 932.328
-	A5           Nota = 880.000
-	G5_SOSTENIDO Nota = 830.609
-	G5           Nota = 783.991
-	F5_SOSTENIDO Nota = 739.989
-	F5           Nota = 698.456
-	E5           Nota = 659.255
-	D5_SOSTENIDO Nota = 622.254
-	D5           Nota = 587.330
-	C5_SOSTENIDO Nota = 554.365
-	C5           Nota = 523.251
-	B4           Nota = 493.883
-	A4_SOSTENIDO Nota = 466.164
-	A4           Nota = 440.000
-	G4_SOSTENIDO Nota = 415.305
-	G4           Nota = 391.995
-	F4_SOSTENIDO Nota = 369.994
-	F4           Nota = 349.228
-	E4           Nota = 329.628
-	D4_SOSTENIDO Nota = 311.127
-	D4           Nota = 293.665
-	C4_SOSTENIDO Nota = 277.183
-	C4           Nota = 261.626
-	B3           Nota = 246.942
-	A3_SOSTENIDO Nota = 233.082
-	A3           Nota = 220.000
-	G3_SOSTENIDO Nota = 207.652
-	G3           Nota = 195.998
-	F3_SOSTENIDO Nota = 184.997
-	F3           Nota = 174.614
-	E3           Nota = 164.814
-	D3_SOSTENIDO Nota = 155.563
-	D3           Nota = 146.832
-	C3_SOSTENIDO Nota = 138.591
-	C3           Nota = 130.813
-	B2           Nota = 123.471
-	A2_SOSTENIDO Nota = 116.541
-	A2           Nota = 110.000
-	G2_SOSTENIDO Nota = 103.826
-	G2           Nota = 979.989
-	F2_SOSTENIDO Nota = 924.986
-	F2           Nota = 873.071
-	E2           Nota = 824.069
-	D2_SOSTENIDO Nota = 777.817
-	D2           Nota = 734.162
-	C2_SOSTENIDO Nota = 692.957
-	C2           Nota = 654.064
-	B1           Nota = 617.354
-	A1_SOSTENIDO Nota = 582.705
-	A1           Nota = 550.000
-	G1_SOSTENIDO Nota = 519.130
-	G1           Nota = 489.995
-	F1_SOSTENIDO Nota = 462.493
-	F1           Nota = 436.536
-	E1           Nota = 412.035
-	D1_SOSTENIDO Nota = 388.909
-	D1           Nota = 367.081
-	C1_SOSTENIDO Nota = 346.479
-	C1           Nota = 327.032
-	B0           Nota = 308.677
-	A0_SOSTENIDO Nota = 291.353
-	A0           Nota = 275.000
+	A4Frequency = 440.0 // Frequency of A4 (reference note)
+)
+
+// NoteFrequency returns the frequency of a note n semitones away from A4.
+func NoteFrequency(n int) Nota {
+	return Nota(A4Frequency * math.Pow(2, float64(n)/12))
+}
+
+// Define notes using NoteFrequency function
+var (
+	C8           Nota = NoteFrequency(39)
+	B7           Nota = NoteFrequency(38)
+	A7_SOSTENIDO Nota = NoteFrequency(37)
+	A7           Nota = NoteFrequency(36)
+	G7_SOSTENIDO Nota = NoteFrequency(35)
+	G7           Nota = NoteFrequency(34)
+	F7_SOSTENIDO Nota = NoteFrequency(33)
+	F7           Nota = NoteFrequency(32)
+	E7           Nota = NoteFrequency(31)
+	D7_SOSTENIDO Nota = NoteFrequency(30)
+	D7           Nota = NoteFrequency(29)
+	C7_SOSTENIDO Nota = NoteFrequency(28)
+	C7           Nota = NoteFrequency(27)
+	B6           Nota = NoteFrequency(26)
+	A6_SOSTENIDO Nota = NoteFrequency(25)
+	A6           Nota = NoteFrequency(24)
+	G6_SOSTENIDO Nota = NoteFrequency(23)
+	G6           Nota = NoteFrequency(22)
+	F6_SOSTENIDO Nota = NoteFrequency(21)
+	F6           Nota = NoteFrequency(20)
+	E6           Nota = NoteFrequency(19)
+	D6_SOSTENIDO Nota = NoteFrequency(18)
+	D6           Nota = NoteFrequency(17)
+	C6_SOSTENIDO Nota = NoteFrequency(16)
+	C6           Nota = NoteFrequency(15)
+	B5           Nota = NoteFrequency(14)
+	A5_SOSTENIDO Nota = NoteFrequency(13)
+	A5           Nota = NoteFrequency(12)
+	G5_SOSTENIDO Nota = NoteFrequency(11)
+	G5           Nota = NoteFrequency(10)
+	F5_SOSTENIDO Nota = NoteFrequency(9)
+	F5           Nota = NoteFrequency(8)
+	E5           Nota = NoteFrequency(7)
+	D5_SOSTENIDO Nota = NoteFrequency(6)
+	D5           Nota = NoteFrequency(5)
+	C5_SOSTENIDO Nota = NoteFrequency(4)
+	C5           Nota = NoteFrequency(3)
+	B4           Nota = NoteFrequency(2)
+	A4_SOSTENIDO Nota = NoteFrequency(1)
+	A4           Nota = NoteFrequency(0)
+	G4_SOSTENIDO Nota = NoteFrequency(-1)
+	G4           Nota = NoteFrequency(-2)
+	F4_SOSTENIDO Nota = NoteFrequency(-3)
+	F4           Nota = NoteFrequency(-4)
+	E4           Nota = NoteFrequency(-5)
+	D4_SOSTENIDO Nota = NoteFrequency(-6)
+	D4           Nota = NoteFrequency(-7)
+	C4_SOSTENIDO Nota = NoteFrequency(-8)
+	C4           Nota = NoteFrequency(-9)
+	B3           Nota = NoteFrequency(-10)
+	A3_SOSTENIDO Nota = NoteFrequency(-11)
+	A3           Nota = NoteFrequency(-12)
+	G3_SOSTENIDO Nota = NoteFrequency(-13)
+	G3           Nota = NoteFrequency(-14)
+	F3_SOSTENIDO Nota = NoteFrequency(-15)
+	F3           Nota = NoteFrequency(-16)
+	E3           Nota = NoteFrequency(-17)
+	D3_SOSTENIDO Nota = NoteFrequency(-18)
+	D3           Nota = NoteFrequency(-19)
+	C3_SOSTENIDO Nota = NoteFrequency(-20)
+	C3           Nota = NoteFrequency(-21)
+	B2           Nota = NoteFrequency(-22)
+	A2_SOSTENIDO Nota = NoteFrequency(-23)
+	A2           Nota = NoteFrequency(-24)
+	G2_SOSTENIDO Nota = NoteFrequency(-25)
+	G2           Nota = NoteFrequency(-26)
+	F2_SOSTENIDO Nota = NoteFrequency(-27)
+	F2           Nota = NoteFrequency(-28)
+	E2           Nota = NoteFrequency(-29)
+	D2_SOSTENIDO Nota = NoteFrequency(-30)
+	D2           Nota = NoteFrequency(-31)
+	C2_SOSTENIDO Nota = NoteFrequency(-32)
+	C2           Nota = NoteFrequency(-33)
+	B1           Nota = NoteFrequency(-34)
+	A1_SOSTENIDO Nota = NoteFrequency(-35)
+	A1           Nota = NoteFrequency(-36)
+	G1_SOSTENIDO Nota = NoteFrequency(-37)
+	G1           Nota = NoteFrequency(-38)
+	F1_SOSTENIDO Nota = NoteFrequency(-39)
+	F1           Nota = NoteFrequency(-40)
+	E1           Nota = NoteFrequency(-41)
+	D1_SOSTENIDO Nota = NoteFrequency(-42)
+	D1           Nota = NoteFrequency(-43)
+	C1_SOSTENIDO Nota = NoteFrequency(-44)
+	C1           Nota = NoteFrequency(-45)
+	B0           Nota = NoteFrequency(-46)
+	A0_SOSTENIDO Nota = NoteFrequency(-47)
+	A0           Nota = NoteFrequency(-48)
 )

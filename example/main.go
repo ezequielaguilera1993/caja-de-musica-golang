@@ -6,14 +6,39 @@ import (
 )
 
 func main() {
+
+	_''00p = Song{
+		NotesToPlay: []NoteToPlay{
+			{
+				Tone:   A4,
+				Figure: N,
+			},
+			{
+				Tone:   A4,
+				Figure: N,
+			},
+			{
+				Tone:   A4,
+				Figure: N,
+			},
+		},
+		SampleRate: 44100,
+		Tempo: Tempo{
+			BPM:           100,
+			FiguraMusical: N,
+		},
+	}
+
 	PlaySong(LooserSong)
-	PlaySong(OdeHim)
+	//PlaySong(a)
+
+	//PlaySong(OdeHim)
 }
 
 var LooserSong = Song{
 	Tempo: Tempo{
-		BPM:         100,
-		PulseFigure: N,
+		BPM:           100,
+		FiguraMusical: N,
 	},
 	SampleRate: beep.SampleRate(44100),
 	NotesToPlay: []NoteToPlay{
@@ -26,8 +51,8 @@ var LooserSong = Song{
 
 var OdeHim = Song{
 	Tempo: Tempo{
-		BPM:         250,
-		PulseFigure: N,
+		BPM:           250,
+		FiguraMusical: N,
 	},
 	SampleRate: beep.SampleRate(44100),
 	NotesToPlay: []NoteToPlay{
