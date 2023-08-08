@@ -2,6 +2,7 @@ package main
 
 import (
 	. "github.com/ezequielaguilera1993/tocadiscos"
+	"time"
 )
 
 func main() {
@@ -9,11 +10,11 @@ func main() {
 	newSong := Song{
 		NotesToPlay: []NoteToPlay{
 			{
-				Nota:          A4,
+				Nota:          A2,
 				FiguraMusical: N,
 			},
 			{
-				Nota:          A4,
+				Nota:          A3,
 				FiguraMusical: N,
 			},
 			{
@@ -21,13 +22,17 @@ func main() {
 				FiguraMusical: N,
 			},
 		},
-		SampleRate: 0,
+		SampleRate: 44100,
 		Tempo: Tempo{
 			BPM: 100,
 		},
 	}
+
 	PlaySong(newSong)
+	time.Sleep(1 * time.Second)
 
 	PlaySong(LooserSong)
+	time.Sleep(1 * time.Second)
+
 	PlaySong(OdeHim)
 }
