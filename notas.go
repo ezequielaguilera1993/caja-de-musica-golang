@@ -1,6 +1,7 @@
 package tocadiscos
 
 import (
+	"fmt"
 	"math"
 )
 
@@ -13,6 +14,10 @@ const (
 // NoteFrequency returns the frequency of a note n semitones away from A4.
 func NoteFrequency(n int) Nota {
 	return Nota(A4Frequency * math.Pow(2, float64(n)/12))
+}
+
+func (n Nota) Frequency() string {
+	return fmt.Sprintf("%.2f Hz", n)
 }
 
 // Define notes using NoteFrequency function
