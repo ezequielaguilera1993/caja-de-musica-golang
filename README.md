@@ -18,53 +18,35 @@ package main
 
 import (
 	. "github.com/ezequielaguilera1993/tocadiscos"
-	"github.com/faiface/beep"
 )
 
 func main() {
+
+	newSong := Song{
+		NotesToPlay: []NoteToPlay{
+			{
+				Nota:          A4,
+				FiguraMusical: N,
+			},
+			{
+				Nota:          A4,
+				FiguraMusical: N,
+			},
+			{
+				Nota:          A4,
+				FiguraMusical: N,
+			},
+		},
+		SampleRate: 0,
+		Tempo: Tempo{
+			BPM: 100,
+		},
+	}
+	PlaySong(newSong)
+
 	PlaySong(LooserSong)
 	PlaySong(OdeHim)
 }
-
-var LooserSong = Song{
-	Tempo: Tempo{
-		BPM:         100,
-		PulseFigure: N,
-	},
-	SampleRate: beep.SampleRate(44100),
-	NotesToPlay: []NoteToPlay{
-		{Tone: F1, Figure: N},
-		{Tone: E1, Figure: N},
-		{Tone: D1_SOSTENIDO, Figure: N},
-		{Tone: D1, Figure: B},
-	},
-}
-
-var OdeHim = Song{
-	Tempo: Tempo{
-		BPM:         250,
-		PulseFigure: N,
-	},
-	SampleRate: beep.SampleRate(44100),
-	NotesToPlay: []NoteToPlay{
-		{Tone: B1 / 2, Figure: N},
-		{Tone: B1 / 2, Figure: N},
-		{Tone: C2 / 2, Figure: N},
-		{Tone: D2 / 2, Figure: N},
-		{Tone: D2 / 2, Figure: N},
-		{Tone: C2 / 2, Figure: N},
-		{Tone: B1 / 2, Figure: N},
-		{Tone: A1 / 2, Figure: N},
-		{Tone: G1 / 2, Figure: N},
-		{Tone: G1 / 2, Figure: N},
-		{Tone: A1 / 2, Figure: N},
-		{Tone: B1 / 2, Figure: N},
-		{Tone: B1 / 2, Figure: N.AgregarPuntillo()},
-		{Tone: A1 / 2, Figure: C},
-		{Tone: A1 / 2, Figure: N.AgregarPuntillo()},
-	},
-}
-
 ```
 
 ## Notes and Tempo
@@ -74,9 +56,14 @@ The package defines a set of musical notes and tempo. Here are some of the avail
 ```go
 // Note constants (frequency in Hz)
 const (
-	C8           tocadiscos.nota = 4186.01
-	B7           tocadiscos.nota = 3951.07
-	A7_SOSTENIDO tocadiscos.nota = 3729.31
+	// ... (more notes available)
+	C5           Nota = NoteFrequency(3)
+	B4           Nota = NoteFrequency(2)
+	A4_SOSTENIDO Nota = NoteFrequency(1)
+	A4           Nota = NoteFrequency(0)
+	G4_SOSTENIDO Nota = NoteFrequency(-1)
+	G4           Nota = NoteFrequency(-2)
+	F4_SOSTENIDO Nota = NoteFrequency(-3)
 	// ... (more notes available)
 )
 ```
